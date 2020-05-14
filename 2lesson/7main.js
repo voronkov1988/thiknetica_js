@@ -1,22 +1,6 @@
 //7 задание
 let text = prompt('Введите текст');
-let count = 0;
-let res = '';
+text = text.split(' ').filter(n => n).join(' ');
 
-for(let i = 0; i < text.length; i++){
-	if(text[i] === ' '){
-		count++;
-		if(count > 1){
-			text[count] = ' '
-		}
-	}else{
-		res += text[i] + ' ';
-	}
-	
-}
-console.log(res);
-
-
-
-
+console.log(text);
 // let a = text.replace(/\s+/g,' ');
