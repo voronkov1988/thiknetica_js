@@ -9,7 +9,8 @@ function res() {
     if (num !== '') {
         allNum.push(num);
         predRes += +num;
-        result += predRes / allNum.length;
+        result = predRes / allNum.length;
+        console.log(result);
         res();
     }else{
     	alert(`Сумма ${predRes} количество чисел ${allNum.length} среднее арифметическое ${result}`)

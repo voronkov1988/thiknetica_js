@@ -1,6 +1,6 @@
 //3 задание
 let date = prompt('Введие дату');
-let mas = date.split('.');
+let mas = date.split('/');
 
 let mm = mas[0];
 let dd = mas[1];
