@@ -17,4 +17,6 @@ for(let i = 0; i < text.length; i++){
 console.log(res);
 
 
+
+
 // let a = text.replace(/\s+/g,' ');
