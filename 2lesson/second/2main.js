@@ -30,6 +30,7 @@ correct('-');
 correct(':');
 correct(': ')
 
+
 if (time.indexOf('am') !== -1) {
     if (dd === '12') {
         dd = '00';
@@ -51,3 +52,4 @@ if (time.indexOf('pm') !== -1) {
     dd = +dd + 12;
 }
 console.log(`${dd}:${mm}`);
+

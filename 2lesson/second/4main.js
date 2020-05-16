@@ -14,6 +14,7 @@ const encode = (resource) => {
   return memo;
 }
 
+
 const decode = (resource) => {
   let memo = '';
   for (let index = 0; index < resource.length; index++) {

@@ -7,3 +7,4 @@ while(count <= iteration*80){
 	count+=80
 }
 document.write(mas.join(''));
+
