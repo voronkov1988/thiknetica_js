@@ -17,17 +17,15 @@ let flights = {
         businessSeats: 4,
         registrationStarts: makeTime(10, 0),
         registartionEnds: makeTime(15, 0),
-        tickets: [
-            {
-                id: 'BH118-B50',
-                flight: 'BH118',
-                fullName: 'Ivanov I. I.',
-                type: 0,
-                seat: 18,
-                buyTime: makeTime(2, 0),
-                registrationTime: makeTime(5, 1),
-            }
-        ],
+        tickets: [{
+            id: 'BH118-B50',
+            flight: 'BH118',
+            fullName: 'Ivanov I. I.',
+            type: 0,
+            seat: 18,
+            buyTime: makeTime(2, 0),
+            registrationTime: null
+        }],
     }
 };
 console.log(flights.BH118.tickets[0].registrationTime);
@@ -182,16 +180,52 @@ function flightDetails(flightName) {
  * @param {number} nowTime текущее время
  * @returns boolean успешна ли регистрация
  */
-function eRegistration(ticket, fullName, nowTime){
-    let endRegister = flights.BH118.registartionEnds;
-    let register;
-    console.log(nowTime, fullName, ticket);
-    if(!ticket)
-        throw new Error('Билета не существует');
-    if(!fullName)
-        throw new Error('Данные не верны');
-    if(endRegister < nowTime)
-        throw new Error('слишком поздно')
-    return register = true;
+function eRegistration(ticket, fullName, nowTime) {
+    let numberReys = ticket.split('-')[0],
+        result;
+
+    let checkFlight = flights[numberReys];
+    if (!checkFlight)
+        throw new Error('рейс не существует');
+    if (!checkFlight.tickets.find(item => item.id == ticket))
+        throw new Error('Билет не найден');
+    if (!checkFlight.tickets.find(item => item.fullName == fullName))
+        throw new Error('Такого пассажира нет');
+    if (nowTime < checkFlight.registrationStarts)
+        console.log(nowTime, checkFlight.registartionEnds);
+    throw new Error('Регистрация не началась');
+    if (nowTime > checkFlight.registartionEnds)
+        throw new Error('Регистрация закончилась');
+
+    return result = true;
 }
-eRegistration(a.id, a.fullName, makeTime(5,1))
+eRegistration(a.id, a.fullName, makeTime(5, 1))
+
+
+
+/**
+ * Отчет о рейсе на данный момент
+ * 
+ * @typedef {Object} Report
+ * @property {string} flight Номер рейса
+ * @property {boolean} registration Доступна регистрация на самолет
+ * @property {boolean} complete Регистрация завершена или самолет улетел
+ * @property {number} countOfSeats Общее количество мест
+ * @property {number} reservedSeats Количество купленных (забронированных) мест
+ * @property {number} registeredSeats Количество пассажиров, прошедших регистрацию
+ */
+
+ /**
+ * Функция генерации отчета по рейсу
+ * 
+ *  * проверка рейса
+ *  * подсчет
+ * 
+ * @param {string} flight номер рейса
+ * @param {number} nowTime текущее время
+ * @returns {Report} отчет
+ */
+function flightReport(flight, nowTime){
+
+}
+
