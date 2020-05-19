@@ -28,7 +28,7 @@ let flights = {
         }],
     }
 };
-console.log(flights.BH118.tickets[0].registrationTime);
+console.log(flights.tickets);
 /**
  * Добавление рейса
  * 
@@ -199,8 +199,6 @@ function eRegistration(ticket, fullName, nowTime) {
 
     return result = true;
 }
-eRegistration(a.id, a.fullName, makeTime(5, 1))
-
 
 
 /**
@@ -226,6 +224,21 @@ eRegistration(a.id, a.fullName, makeTime(5, 1))
  * @returns {Report} отчет
  */
 function flightReport(flight, nowTime){
-
+    let infoReys = {};
+    const masReys = flights[flight];
+    if(!masReys)
+        throw new Error('Рейс не найден');
+    infoReys.register = nowTime > masReys.registrationStarts && nowTime < masReys.registartionEnds ? 'Идет регистрация' : 'регистрация окончена';
+    infoReys.complete = nowTime > masReys.registartionEnds ? 'Самолет улетел' : 'Самолет в аэропорту';
+    infoReys.countOfSeats = masReys.seats + masReys.businessSeats;
+    infoReys.reservedSeats = masReys.tickets.length;
+    infoReys.registeredSeats = sum(masReys.tickets).length;
+    function sum(persons){
+        let sumPerson = 0;
+        let a = persons.filter(n => persons.registrationTime != null);
+        return a;
+    }
+    console.log(infoReys);
 }
 
+// flightReport('BH118', makeTime(15,1));
