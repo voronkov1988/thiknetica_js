@@ -230,15 +230,10 @@ function flightReport(flight, nowTime){
         throw new Error('Рейс не найден');
     infoReys.register = nowTime > masReys.registrationStarts && nowTime < masReys.registartionEnds ? 'Идет регистрация' : 'регистрация окончена';
     infoReys.complete = nowTime > masReys.registartionEnds ? 'Самолет улетел' : 'Самолет в аэропорту';
-    infoReys.countOfSeats = masReys.seats + masReys.businessSeats;
+    infoReys.countOfSeats = masReys.seats;
     infoReys.reservedSeats = masReys.tickets.length;
-    infoReys.registeredSeats = sum(masReys.tickets).length;
-    function sum(persons){
-        let sumPerson = 0;
-        let a = persons.filter(n => persons.registrationTime != null);
-        return a;
-    }
+    infoReys.registeredSeats = masReys.tickets.filter(n => n.registrationTime != null).length;
     console.log(infoReys);
 }
 
-// flightReport('BH118', makeTime(15,1));
+flightReport('BH118', makeTime(15,1));
