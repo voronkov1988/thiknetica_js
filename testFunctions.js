@@ -3,6 +3,14 @@ describe('sumOfPositive', () => {
         const result = sumOfPositive([1,2,3]);
         assert.deepEqual(result, {count: 3, sum: 6});
     });
+    it('empty array', () => {
+        const result = sumOfPositive([]);
+        assert.deepEqual(result, {count: 0, sum: 0});
+    });
+    it('Infinity', () => {
+        const result = sumOfPositive([Infinity]);
+        assert.deepEqual(result, {count: 1, sum: Infinity});
+    });
     it('correct', () => {
         const result = sumOfPositive([0,0,0]);
         assert.deepEqual(result, {count: 0, sum: 0});
