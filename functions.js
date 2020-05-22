@@ -13,21 +13,29 @@ function sumOfPositive(args) {
 
 const text = 'Lorem ipsum dolor sit amet.';
 
-function wordStat(string) {
-    let object;
-    let array = string.split(' ');
-    object = array.map(slovo => {
-        return {
-            word: slovo,
-            sum: getSumCode(slovo)
-        }
-    })
-    console.log(object);
-    return object
+function wordStat(str) {
+    if (typeof str !== 'string') {
+       return 'error'
+    } else {
+    	let object = str.split(' ').map(slovo => {
+            return {
+                word: slovo,
+                sum: getSumCode(slovo)
+            }
+        })
+        console.log(object);
+        return object
+        
+    }
+
 }
 wordStat(text);
 
 function getSumCode(word) {
-	// console.log(word.split('').reduce((sum, string) => sum + string.charCodeAt(), 0));
-    return word.split('').reduce((sum, string) => sum + string.charCodeAt(), 0);
+    if (typeof word === "string") {
+        return word.split('').reduce((sum, string) => sum + string.charCodeAt(), 0);
+    } else {
+        return 'error'
+    }
+
 }
