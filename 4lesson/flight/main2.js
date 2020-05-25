@@ -5,16 +5,16 @@
 
 let newTicket = {};
 
-function flightDetails(flightName){
-let ticket = flights[flightName].tickets;
-const mainDiv = document.querySelector('#flight-details');
+function flightDetails(flightName) {
+    let ticket = flights[flightName].tickets;
+    const mainDiv = document.querySelector('#flight-details');
 
-ticket.forEach((item,index)=> {
-let newTicket = document.createElement('div');
-newTicket.innerText = item.id + ' : ' + item.seat + ' - ' + item.fullName + ' - ' + item.registrationTime;
-mainDiv.append(newTicket)
-console.log(newTicket);
-});
+    ticket.forEach((item, index) => {
+        let newTicket = document.createElement('div');
+        newTicket.innerText = item.id + ' : ' + item.seat + ' - ' + item.fullName + ' - ' + item.registrationTime;
+        mainDiv.append(newTicket)
+        console.log(newTicket);
+    });
 
 }
 console.log(flightDetails('BH118'));
