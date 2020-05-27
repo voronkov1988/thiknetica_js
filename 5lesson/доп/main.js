@@ -14,6 +14,7 @@ td.forEach(item => {
 			resCalc.textContent = getResult(calculatedString);
 		}
 		if(item.textContent === 'C'){
+			calculatedString = '';
 			resCalc.textContent = 0;
 		}
 	});
