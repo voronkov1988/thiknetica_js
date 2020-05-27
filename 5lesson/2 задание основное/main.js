@@ -17,9 +17,15 @@ function getTicket(e){
 		inputs = document.querySelectorAll('input');
 		let days = bTime.value.split('-')[1];
 		let month = bTime.value.split('-')[2];
-		let func = buyTicket(flName, makeTime(days,month), fName)
 		
-		alert(`Вы успешно купили билет, ваше место ${func.seat}`)
+		try{
+			let func = buyTicket(flName, makeTime(days,month), fName)
+			alert(`Вы успешно купили билет, ваше место ${func.seat}`)
 		inputs.forEach(item => item.value = '');
+		}
+		catch(error){
+			alert(error.message);
+		}
+		
 		
 }
