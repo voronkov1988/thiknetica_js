@@ -10,6 +10,7 @@ const submit = document.querySelector('.submit');
 submit.addEventListener('click', getTicket);
 function getTicket(e){
 	e.preventDefault();
+
 	let flName = document.querySelector('input.flightName').value,
 		bTime = document.querySelector('input.buyTime'),
 		fName = document.querySelector('input.fullName').value,

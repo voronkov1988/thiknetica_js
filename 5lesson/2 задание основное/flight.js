@@ -102,6 +102,7 @@ function findAvailableSeat(flight, type) {
  * @param {number} type Тип места
  * @returns {Ticket} Возвращаем копию билета
  */
+ 
 function buyTicket(flightName, buyTime, fullName, type = 0) {
     const flight = flights[flightName];
 
