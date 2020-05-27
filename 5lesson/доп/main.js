@@ -1,7 +1,8 @@
-let td = document.querySelectorAll('td');
-let resultRavno = document.querySelector('td.result');
+const td = document.querySelectorAll('td');
+const resultRavno = document.querySelector('td.result');
 let calculatedString = '';
-let resCalc = document.querySelector('.result');
+const resCalc = document.querySelector('.result');
+const resSpan = document.querySelector('.result span');
 
 
 
@@ -9,7 +10,7 @@ td.forEach(item => {
 	item.addEventListener('click', ()=>{
 		//получаю полную строку выражения
 		calculatedString += item.textContent;
-		console.log(item.textContent);
+		resSpan.textContent = calculatedString;
 		if(item.textContent === '=') {
 			resCalc.textContent = getResult(calculatedString);
 		}
@@ -33,5 +34,4 @@ function getResult(calculatedString){
 
 	let res = new Function('return ' + `${calcString[0]} ${znak} ${calcString[1]}`)();
 	return res
-	console.log(res);
 }

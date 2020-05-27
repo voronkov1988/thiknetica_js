@@ -6,7 +6,7 @@
 </head>
 <body>
 	<div class="calc" style="width: 30%; height: 400px">
-		<div class="result">0</div>
+		<div class="result">0 <span class="string"></span></div>
 		<div>
 			<table>
 				<tr>
@@ -53,6 +53,12 @@
 			border: 2px solid black;
 			/*width: 400px;*/
 			/*height: 100px;*/
+		}
+		.result span{
+			position: absolute;
+			margin-left: 3em;
+			color: gray;
+			font-size: 25px;
 		}
 	</style>
 	<script src="main.js"></script>
