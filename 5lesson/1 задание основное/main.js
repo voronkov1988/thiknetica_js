@@ -1,7 +1,7 @@
 //1. Доработать графический редактор, начатый на занятии
 //    Увеличить поле
 //    Добавить возможность выбора цвета 
-let color1 = [
+let palette = [
     ["белый", "#fff7f7"],
     ["серно-желтый", "#e7be00"],
     ["желтый", "#ffb200"],
@@ -57,17 +57,18 @@ let color1 = [
     // ["серебристый", "#d7d7d7"],
     // ["золотистый", "#d7d7d7"]
 ];
-let tr = document.querySelector('tr');
-let image = document.querySelector('table');
-let color = document.querySelector('.color-block')
-let allTr;
+const tr = document.querySelector('tr');
+const image = document.querySelector('table');
+const colorPicker = document.querySelector('.color-block')
+
 
 for (let i = 1; i < 50; i++) {
+    let allTr;
     allTr = tr.cloneNode(true);
     image.append(allTr)
 }
 
-color1.forEach((item, palitra) => {
+palette.forEach((item, palitra) => {
     let divColor = document.createElement('div');
     divColor.classList.add('palitra');
     divColor.style.width = '100px';
@@ -75,10 +76,10 @@ color1.forEach((item, palitra) => {
     divColor.style.heigth = '50px';
     divColor.style.backgroundColor = item[1];
     divColor.innerText = item[0];
-    color.append(divColor);
+    colorPicker.append(divColor);
 })
 
-color.addEventListener('click', (e) => {
+colorPicker.addEventListener('click', (e) => {
     let checkColor = e.target.style.backgroundColor;
     makePaper(checkColor)
 });
@@ -94,5 +95,5 @@ function makePaper(color) {
             e.target.style.backgroundColor = 'white';
         }
     })
-    console.log(color)
+    console.log(colorPicker)
 }
