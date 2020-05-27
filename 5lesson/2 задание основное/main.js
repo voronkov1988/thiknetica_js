@@ -20,4 +20,5 @@ function getTicket(e){
 		
 		alert(`Вы успешно купили билет, ваше место ${func.seat}`)
 		inputs.forEach(item => item.value = '');
+		
 }
