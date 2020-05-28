@@ -4,7 +4,23 @@ let calculatedString = '';
 const resCalc = document.querySelector('.result');
 const resSpan = document.querySelector('.result span');
 
-
+document.addEventListener('keydown', (event) => {
+	if(event.key.match(/\//)) event.preventDefault;
+    if ((event.key).match(/[0-9%\/*\-+=]|Backspace|Enter/)){
+        //получаю полную строку выражения
+        calculatedString += event.key;
+        resSpan.textContent = calculatedString;
+        if (event.key === 'Enter') {
+            resCalc.textContent = getResult(calculatedString.substring(4,-1));
+            calculatedString = +getResult(calculatedString.substring(4,-1));
+        }
+        if (event.key === 'Backspace') {
+            calculatedString = '';
+            resCalc.textContent = 0;
+        }
+    }
+    	
+})
 
 td.forEach(item => {
     item.addEventListener('click', () => {
@@ -22,6 +38,7 @@ td.forEach(item => {
     });
 })
 
+
 function getResult(calculatedString) {
     let res = 0;
     //в конце строки вырезаю =
@@ -34,7 +51,6 @@ function getResult(calculatedString) {
     if (resultString.includes('*')) znak = `*`;
     //создаю массив исходя какой знак
     let calcString = resultString.split(znak);
-    console.log(calcString);
     switch (znak) {
         case '+':
             res = +calcString[0] + +calcString[1];
