@@ -2,7 +2,8 @@ const td = document.querySelectorAll('td');
 const resultRavno = document.querySelector('td.result');
 let calculatedString = '';
 const resCalc = document.querySelector('.result');
-const resSpan = document.querySelector('.result span');
+let resSpan = document.querySelector('.result span');
+let res = 0;
 
 document.addEventListener('keydown', (event) => {
 	if(event.key.match(/\//)) event.preventDefault;
@@ -30,6 +31,7 @@ td.forEach(item => {
         if (item.textContent === '=') {
             resCalc.textContent = getResult(calculatedString);
             calculatedString = +getResult(calculatedString);
+            resSpan.textContent = res;
         }
         if (item.textContent === 'C') {
             calculatedString = '';
@@ -40,9 +42,10 @@ td.forEach(item => {
 
 
 function getResult(calculatedString) {
-    let res = 0;
+    
     //в конце строки вырезаю =
-    let resultString = calculatedString.substring(0, calculatedString.length - 1)
+    let resultString = calculatedString.substring(0, calculatedString.length - 1);
+    resSpan.textContent = resultString;
     //определяю какой знак у выражения
     let znak;
     if (resultString.includes('+')) znak = `+`;
@@ -54,6 +57,7 @@ function getResult(calculatedString) {
     switch (znak) {
         case '+':
             res = +calcString[0] + +calcString[1];
+            resSpan = res;
             break;
         case '-':
             res = +calcString[0] - +calcString[1];
@@ -63,6 +67,7 @@ function getResult(calculatedString) {
         	break;
         case '*':
         	res = +calcString[0] * +calcString[1];
+        	break;
     }
     
     return res
