@@ -41,12 +41,12 @@ class HtmlElement {
     updateText(data) {
         this.textContent = data;
         let variable = this.variables;
-        variable.prototype = Array;
+        // variable.prototype = Array;
         //получаю строку названия свойства как в обьекте variables
         let template = data.split('').slice(2,-2).join(''); // == qwerty
         console.log(template);
         //можно ли подставить значение template которое = 'qwerty'
-        this._template.textContent = variable.qwerty;
+        this._template.textContent = variable[template];
     }
 }
 
@@ -80,10 +80,8 @@ one.variables = {
     output: 'Some text',
     qwerty: 'some'
 }
-
-
 one.render();
-one.updateText('{{qwerty}}');
+one.updateText('{{output}}');
 one.onClick = () => console.log('onclick');
 console.log(one);
 // one.unrender();
