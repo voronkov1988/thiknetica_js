@@ -104,39 +104,3 @@ two.onInput = () => console.log('onInput');
 two.onFocus = () => console.log('onFocus');
 // two.unrender();
 console.log(two);
-
-
-// class HtmlElement {
-//     constructor(target) {
-//         this._target = document.querySelector(target); //куда вставлять
-//         this.template; //создаваемый элемент
-//         this.stili = {};
-//     }
-
-//     set styles(stylesheet){
-//      console.log(stylesheet);
-//      this.stili = stylesheet;
-//      console.log(this.stili);
-//      this.template.style = this.stili
-//     }
-//     get styles(){
-//      return this.stili;
-//     }
-
-//     createElement(el) {
-//      console.log(this._target);
-//         let element = document.createElement(el);
-//         this.template = element;
-//         this._target.append(element)
-//     }
-//     createTextInElement(text){
-//      this.template.textContent = text;
-//     }
-// }
-
-// const one = new HtmlElement('ul');
-// one.createElement('li');
-// one.createTextInElement('dfdgfg');
-// one.styles = {color:'red',fontSize:'3em'};
-// one.target = 'a';
-// console.log(one);
