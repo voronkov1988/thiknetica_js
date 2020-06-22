@@ -4,6 +4,7 @@ class HtmlElement {
         this._template;
         this._styles;
         this._textContent;
+        this._variables;
     }
     set target(dom){
     	if(!dom)
@@ -23,9 +24,11 @@ class HtmlElement {
     	console.log(this._template);
     	
     }
-    get template(){
-    	console.log(this._template);
+    set variables(data) {
+        this._variables = data;
+        this.newTemplate(data);
     }
+
     _render(){
     	this._target.append(this._template);
     }
@@ -46,6 +49,19 @@ class HtmlElement {
     	if(this.textContent){
     		this._template.textContent += this.textContent;
     	}
+    }
+    newTemplate = function (object) {
+        let updateTemplate;
+        const template = this._template;
+
+        Object.keys(object).map(function(objectKey, index) {
+            const name = objectKey;
+            const value = object[objectKey];
+            console.log(value, name)
+            updateTemplate = `{{${name}}}`.replace(name, value)
+        });
+
+        this._variables = updateTemplate;
     }
 }
 
@@ -76,6 +92,12 @@ one.template = 'div';
 one.styles = 'color: red; font-size:2em';
 one.updateText('qwerty');
 one.updateText(' 123');
+
+one.variables = {
+    value: 'test',
+    value2: 'test2'
+};
+
 one.render();
 one.onClick = () => console.log('onclick');
 // one.unrender();
