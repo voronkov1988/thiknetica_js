@@ -86,8 +86,6 @@ class CustomPromise {
     }
 }
 
-
-
 const prom = new CustomPromise();
 const prom2 = new CustomPromise();
 const prom3 = CustomPromise.reject(100);
