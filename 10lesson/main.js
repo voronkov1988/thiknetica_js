@@ -1,14 +1,18 @@
 const API_KEY = 'FxnDLKI3So5xqmdmyP8JXGS51CtsJVPd';
-let input = document.querySelector('input');
+
 const getGif = (value) => {
-    return fetch(`http://api.giphy.com/v1/gifs/search?q=${value}&api_key=${API_KEY}`).then(result => {
+    return fetch(`http://api.giphy.com/v1/gifs/search?q=${value}&api_key=${API_KEY}`,{
+        cache: "force-cache"
+    }).then(result => {
         if(!result.ok) {
-            throw new Error(result.status)
+            throw new Error('Ошибка')
         }
         return result.json();
     }).then(result =>{
+        if(result.meta.status !== 200) {
+            throw new Error(result.status)
+        }
         let cache = {[value] : result.data};
-        console.log(value)
         return cache;
     }).then(cache =>{
         let div = document.querySelector('.img');
@@ -20,7 +24,6 @@ const getGif = (value) => {
                 let element = document.createElement('div');
                 element.textContent = item.url;
                 div.append(element);
-                console.log(item.url)
             });
             const hr = document.createElement('hr');
             div.append(hr)
@@ -37,8 +40,12 @@ function debounce(f, ms) {
         setTimeout(() => isCooldown = false, ms);
     };
 }
-input.addEventListener('input', ()=>{
-    setTimeout( () => f(input.value), 1000);
-});
+function Input (input){
+    let inputs = document.querySelector(input);
+    inputs.addEventListener(input, ()=>{
+        setTimeout( () => f(inputs.value), 1000);
+    });
+}
+Input('input');
 
 let f = debounce(getGif, 1000);
